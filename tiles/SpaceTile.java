@@ -1,3 +1,4 @@
+package tiles;
 
 public class SpaceTile extends Tile {
 
