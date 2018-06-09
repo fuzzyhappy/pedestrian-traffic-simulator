@@ -33,6 +33,11 @@ public abstract class Tile {
     else return false;
   }
 
+  public boolean isAccessible() {
+    if (this.currentStudents < capacity) return true;
+    else return false;
+  }
+
   public abstract String getType();
 
 
