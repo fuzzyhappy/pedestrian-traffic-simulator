@@ -1,13 +1,13 @@
 import java.lang.RuntimeException;
 
 public class Student{
-  int[] destination;
-  int[] location;
-  int steps;
-  int starttime;
-  int endtime;
-  boolean tardy;
-  boolean inClass;
+  private int[] destination;
+  private int[] location;
+  private int steps;
+  private int starttime;
+  private int endtime;
+  private boolean tardy;
+  private boolean inClass;
   public Student(int[] loc, int[] dest, int start){
     destination = dest;
     steps = 0;

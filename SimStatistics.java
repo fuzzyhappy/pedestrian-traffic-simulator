@@ -1,8 +1,8 @@
 import java.util.ArrayList;
 import java.util.Iterator;
 public class SimStatistics{
-  Map map;
-  ArrayList<Student> students;
+  private Map map;
+  private ArrayList<Student> students;
   public SimStatistics(Map finishedMap){
     map = finishedMap;
     students = finishedMap.getRemovedStudents();
