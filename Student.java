@@ -9,11 +9,11 @@ public class Student{
   boolean tardy;
   boolean inClass;
   public Student(int[] loc, int[] dest, int start){
-      destination = dest;
-      steps = 0;
-      starttime = start;
-      tardy = false;
-      inClass = false;
+    destination = dest;
+    steps = 0;
+    starttime = start;
+    tardy = false;
+    inClass = false;
   }
   public void updateLocation(int[] loc){
     location = loc;
