@@ -3,6 +3,7 @@
 
 import java.util.ArrayList;
 import java.util.Random;
+import tiles.*;
 
 public class Map {
     
@@ -11,13 +12,13 @@ public class Map {
     private Tile[][] tileMap;
     private ArrayList<Student> students;
     private ArrayList<Student> removedStudents;
-    private ArrayList<Integer[][]> entryTiles;
-    private ArrayList<Integer[][]> exitTiles;
+    private ArrayList<Integer[]> entryTiles;
+    private ArrayList<Integer[]> exitTiles;
     
     private void spawnStudent(int[] coords) {
 	Random rand = new Random();
 	int[] location = coords[];
-	int[] destination = exitTiles.get(rand.nextInt(exitTiles.size())).getCoords();
+	int[] destination = exitTiles.get(rand.nextInt(exitTiles.size()));
 	Student evan = new Student(location, destination, time);
 	students.add(evan);
     }
@@ -33,15 +34,37 @@ public class Map {
     }
 
     private void removeStudent(Student evan) {
-	
-    }
-
-    public Tile[][] getTileMap() {
-	return tileMap;
+	if(!students.contains(evan))
+	    return;
+	removedStudents.add(students.remove(evan));
     }
 
     public void processTimeStep() {
+	for(Integer[] coords: entryTiles) {
+	    Tile currentTile = tileMap[coords[0]][coords[1]];
+	    double proportion = (currentTile.getCurrentStudents()*1.0)/(currentTile.getCapacity());
+	    double probability = Math.pow(proportion, 5) + 1;
+	    if(Math.random() < probability)
+		spawnStudent((int[]) coords);
+	}
+	
+	for(Student evan: students) {
+	    
+	}
+	
 	time++;
+    }
+
+    public ArrayList<Student> getActiveStudents() {
+	return students;
+    }
+    
+    public Tile[][] getTileMap() {
+	return tileMap;
+    }
+    
+    public ArrayList<Student> getRemovedStudents() {
+	return removedStudents;
     }
     
     public Map(int lateTime, Tile[][] tileMap) {
