@@ -23,7 +23,7 @@ public class Student{
     else return false;
   }
   public double eff(){
-    if(!inclass) throw new RuntimeException("Checked for eff when student has not reached class.");
+    if(!inClass) throw new RuntimeException("Checked for eff when student has not reached class.");
     return steps*1.0/(endtime-starttime);
   }
 
