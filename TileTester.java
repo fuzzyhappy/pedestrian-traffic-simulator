@@ -4,15 +4,19 @@ public class TileTester {
 
   public static void main(String [] args) {
 
-    Tile[][] map = new Tile[10][10];
+    Tile[][] tileMap = new Tile[10][10];
 
+    Map map = new Map(5, tileMap);
+
+    /*
     map[5][4] = new SpaceTile(new int[] {5, 4});
     map[5][5] = new EntryTile(new int[] {5, 5}, 5, 3);
     map[2][4] = new WallTile(new int[] {2, 4});
+    */
 
-    for (int i = 0; i < map.length; i++) {
-      for (int j = 0; j < map[i].length; j++) {
-        Tile mapTile = map[i][j];
+    for (int i = 0; i < map.getTileMap().length; i++) {
+      for (int j = 0; j < map.getTileMap()[i].length; j++) {
+        Tile mapTile = map.getTileMap()[i][j];
         if (mapTile == null) { System.out.print(". "); }
 
         else {
