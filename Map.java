@@ -58,7 +58,7 @@ public class Map {
 	}
 
 	for(Student evan: students) {
-
+	    
 	}
 
 	time++;
