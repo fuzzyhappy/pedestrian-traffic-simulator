@@ -18,7 +18,7 @@ public class Map {
     private void spawnStudent(int[] coords) {
 	Random rand = new Random();
 	int[] location = coords;
-	int[] destination = exitTiles.get(rand.nextInt(exitTiles.size())).intValue();
+	int[] destination = integerArrayToPrimitive(exitTiles.get(rand.nextInt(exitTiles.size())));
 	Student evan = new Student(location, destination, time);
 	students.add(evan);
     }
@@ -36,8 +36,16 @@ public class Map {
     private void removeStudent(Student evan) {
 	if(!students.contains(evan))
 	    return;
-  students.remove(evan);
+	students.remove(evan);
 	removedStudents.add(evan);
+    }
+
+    private int[] integerArrayToPrimitive(Integer[] array) {
+	int[] primitiveArray = new int[array.length];
+	for(int i = 0; i <= array.length - 1; i++) {
+	    primitiveArray[i] = i;
+	}
+	return primitiveArray;
     }
 
     public void processTimeStep() {
@@ -46,7 +54,7 @@ public class Map {
 	    double proportion = (currentTile.getCurrentStudents()*1.0)/(currentTile.getCapacity());
 	    double probability = Math.pow(proportion, 5) + 1;
 	    if(Math.random() < probability)
-		spawnStudent((int[]) coords);
+		spawnStudent(integerArrayToPrimitive(coords));
 	}
 
 	for(Student evan: students) {
