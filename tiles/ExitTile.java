@@ -1,3 +1,4 @@
+package tiles;
 
 public class ExitTile extends Tile {
 
