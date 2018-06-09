@@ -1,14 +1,38 @@
 
-public interface Tile {
+public abstract class Tile {
 
-  int[] getCoords();
-  int getCapacity();
-  int getCurrentStudents();
+  private int[] coords;
+  private int capacity;
+  private int currentStudents;
 
-  boolean addPerson(); // if fails, returns false
-  boolean removePerson();
+  public Tile(int[] coords, int capacity, int currentStudents) {
+    this.coords = coords;
+    this.capacity = capacity;
+    this.currentStudents = currentStudents;
+  }
 
-  String getType();
+  public int[] getCoords() { return this.coords; }
+  public int getCapacity() { return this.capacity; }
+  public int getCurrentStudents() { return this.currentStudents; }
+
+  // if adding or subtracting fails, returns false
+  public boolean addPerson() {
+    if (this.currentStudents < this.capacity) {
+      this.currentStudents++;
+      return true;
+    }
+    else return false;
+  }
+
+  public boolean removePerson() {
+    if (this.currentStudents > 0) {
+      this.currentStudents--;
+      return true;
+    }
+    else return false;
+  }
+
+  public abstract String getType();
 
 
 }
