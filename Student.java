@@ -13,6 +13,9 @@ public class Student{
       starttime = start;
       inClass = false;
   }
+  public void updateLocation(Tile loc){
+    location = loc;
+  }
   public void destReach(int end){
     endtime = end;
     inClass = true;
@@ -25,6 +28,10 @@ public class Student{
   public double eff(){
     if(!inClass) throw new RuntimeException("Checked for eff when student has not reached class.");
     return steps*1.0/(endtime-starttime);
+  }
+
+  public Tile getLocation(){
+    return location;
   }
 
 }
