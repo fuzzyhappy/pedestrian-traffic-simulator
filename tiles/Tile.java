@@ -15,6 +15,7 @@ public abstract class Tile {
   public int[] getCoords() { return this.coords; }
   public int getCapacity() { return this.capacity; }
   public int getCurrentStudents() { return this.currentStudents; }
+  public int getSpace(){return this.capacity-this.currentStudents;}
 
   // if adding or subtracting fails, returns false
   public boolean addPerson() {
